@@ -1,5 +1,6 @@
 import java.io.*;
 import java.net.*;
+import java.util.Scanner;
 
 public class ChatClient {
     private Socket clientSocket;
@@ -39,8 +40,19 @@ public class ChatClient {
     public static void main(String[] args) {
         ChatClient client = new ChatClient();
         client.startConnection("127.0.0.1", 6666);
-        client.sendMessage("Hello, Server!");
-        client.sendMessage("How are you?");
+
+        Scanner scanner = new Scanner(System.in);
+        String message;
+        while (true) {
+            System.out.print("You: ");
+            message = scanner.nextLine();
+            client.sendMessage(message);
+            if (message.equalsIgnoreCase("exit")) {
+                break;
+            }
+        }
+
         client.stopConnection();
+        scanner.close();
     }
 }
