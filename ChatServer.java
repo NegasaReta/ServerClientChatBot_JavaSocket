@@ -18,7 +18,12 @@ public class ChatServer {
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
             String inputLine;
-            while ((inputLine = in.readLine()) != null) {
+            while (true) {
+                inputLine = in.readLine();
+                if (inputLine == null || inputLine.equalsIgnoreCase("exit")) {
+                    System.out.println("Client disconnected");
+                    break;
+                }
                 System.out.println("Received: " + inputLine);
                 out.println("Server: " + inputLine);
             }
