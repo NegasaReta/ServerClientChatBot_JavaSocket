@@ -12,6 +12,8 @@ Features:
   **Socket Programming:** Utilizes Java's ServerSocket and Socket classes for network communication.
 		
   **Multi-threading:** Can be extended to handle multiple clients concurrently.
+
+  
 **Usage:**
 
 **Run the Server:** Start the server by running the ChatServer class.
